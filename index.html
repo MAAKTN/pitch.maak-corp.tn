@@ -4,46 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MAAK CORP - Strategic Partnership Presentation</title>
+  <title>MAAK CORP & PowerMaps - Strategic Partnership Presentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #ffffff;
-      color: #000000;
-      overflow: auto;
-      line-height: 1.6;
     }
 
-    .presentation-container {
-      width: 100vw;
-      height: 100vh;
-      position: relative;
+    .slide-enter {
+      animation: slideEnter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .slide {
-      width: 100%;
-      height: 100%;
-      display: none;
-      padding: 80px 100px;
-      background: #ffffff;
-      position: absolute;
-      top: 0;
-      left: 0;
-      animation: slideIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .slide.active {
-      display: flex;
-      flex-direction: column;
-    }
-
-    @keyframes slideIn {
+    @keyframes slideEnter {
       from {
         opacity: 0;
         transform: translateX(20px);
@@ -55,878 +29,415 @@
       }
     }
 
-    .slide-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 60px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #000000;
-    }
-
-    .slide-number {
-      background: #000000;
-      color: #ffffff;
-      padding: 8px 16px;
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 1px;
-    }
-
-    .brand-header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .logo {
-      width: 60px;
-      height: 60px;
-      background: #000000;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 18px;
-      letter-spacing: -1px;
-    }
-
-    .company-tag {
-      background: #ffffff;
-      border: 2px solid #000000;
-      padding: 6px 12px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-size: 3.5rem;
-      margin-bottom: 40px;
-      color: #000000;
-      font-weight: 900;
-      letter-spacing: -2px;
-      line-height: 1.1;
-    }
-
-    h2 {
-      font-size: 2.4rem;
-      margin-bottom: 30px;
-      color: #000000;
-      font-weight: 700;
-      letter-spacing: -1px;
-    }
-
-    h3 {
-      font-size: 1.6rem;
-      margin-bottom: 25px;
-      color: #000000;
-      font-weight: 600;
-      position: relative;
-      padding-left: 20px;
-    }
-
-    h3::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 4px;
-      height: 30px;
-      background: #000000;
-    }
-
-    .content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .three-column {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 60px;
-    }
-
-    .card {
-      background: #ffffff;
-      padding: 30px;
-      border: 2px solid #000000;
-      margin-bottom: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
+    .hover-lift:hover {
       transform: translateY(-2px);
       box-shadow: 4px 4px 0px #000000;
     }
 
-    .card h4 {
-      color: #000000;
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-      font-weight: 700;
+    .icon-bounce {
+      animation: iconBounce 2s ease-in-out infinite;
     }
 
-    .card p {
-      color: #333333;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
+    @keyframes iconBounce {
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      margin: 50px 0;
-    }
-
-    .stat-card {
-      background: #ffffff;
-      border: 2px solid #000000;
-      padding: 40px 20px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .stat-card:hover {
-      background: #000000;
-      color: #ffffff;
-    }
-
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 10px;
-      color: inherit;
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .timeline {
-      display: flex;
-      justify-content: space-between;
-      margin: 60px 0;
-      position: relative;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 30px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: #000000;
-      z-index: 0;
-    }
-
-    .timeline-item {
-      background: #ffffff;
-      padding: 30px 20px;
-      border: 2px solid #000000;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-      flex: 1;
-      margin: 0 10px;
-      max-width: 250px;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 20px;
-      height: 20px;
-      background: #000000;
-      border: 4px solid #ffffff;
-    }
-
-    .timeline-item h4 {
-      color: #000000;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-
-    .phase-duration {
-      color: #666666;
-      font-size: 0.8rem;
-      margin-bottom: 15px;
-      font-weight: 500;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      text-align: left;
-    }
-
-    li {
-      padding: 6px 0;
-      position: relative;
-      padding-left: 20px;
-      line-height: 1.5;
-      color: #333333;
-      font-size: 0.9rem;
-    }
-
-    li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      top: 6px;
-      font-weight: 900;
-      color: #000000;
-    }
-
-    .navigation {
-      position: fixed;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 20px;
-      z-index: 1000;
-    }
-
-    .nav-btn {
-      background: #ffffff;
-      color: #000000;
-      border: 2px solid #000000;
-      padding: 12px 24px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .nav-btn:hover:not(:disabled) {
-      background: #000000;
-      color: #ffffff;
-    }
-
-    .nav-btn:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-
-    .slide-indicator {
-      position: fixed;
-      top: 40px;
-      right: 40px;
-      background: #000000;
-      color: #ffffff;
-      padding: 12px 20px;
-      font-weight: 600;
-      font-size: 14px;
-      letter-spacing: 1px;
-    }
-
-    .highlight-section {
-      background: #f8f8f8;
-      padding: 40px;
-      border: 2px solid #000000;
-      margin: 40px 0;
-    }
-
-    .highlight-section h3 {
-      margin-bottom: 25px;
-      font-size: 1.8rem;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin: 40px 0;
-    }
-
-    .benefit-card {
-      background: #ffffff;
-      padding: 30px;
-      border: 2px solid #000000;
-      transition: all 0.3s ease;
-    }
-
-    .benefit-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 4px 4px 0px #000000;
-    }
-
-    .benefit-card .icon {
-      font-size: 2rem;
-      margin-bottom: 15px;
-      display: block;
-      font-weight: 900;
-    }
-
-    .benefit-card h4 {
-      color: #000000;
-      margin-bottom: 12px;
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-
-    .benefit-card p {
-      color: #333333;
-      line-height: 1.6;
-      font-size: 0.95rem;
-    }
-
-    .title-slide {
-      text-align: center;
-      justify-content: center;
-      background: #ffffff;
-    }
-
-    .title-slide h1 {
-      font-size: 5rem;
-      margin-bottom: 30px;
-      color: #000000;
-    }
-
-    .title-slide .subtitle {
-      font-size: 1.6rem;
-      margin-bottom: 40px;
-      color: #333333;
-      font-weight: 400;
-      letter-spacing: 1px;
-    }
-
-    .title-slide .company-info {
-      font-size: 1.1rem;
-      color: #666666;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      margin-top: 40px;
-    }
-
-    .tech-stack {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-      margin: 40px 0;
-    }
-
-    .stack-category {
-      background: #ffffff;
-      padding: 30px;
-      border: 2px solid #000000;
-    }
-
-    .stack-category h4 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: #000000;
-    }
-
-    .partnership-models {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      margin: 50px 0;
-    }
-
-    .model-card {
-      background: #ffffff;
-      padding: 40px 30px;
-      border: 2px solid #000000;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .model-card:hover {
-      background: #000000;
-      color: #ffffff;
-    }
-
-    .model-number {
-      width: 50px;
-      height: 50px;
-      background: #000000;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 1.5rem;
-      font-weight: 900;
-    }
-
-    .model-card:hover .model-number {
-      background: #ffffff;
-      color: #000000;
-    }
-
-    .model-card h4 {
-      color: inherit;
-      margin-bottom: 20px;
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-
-    .quote-section {
-      background: #f8f8f8;
-      padding: 50px;
-      border-left: 6px solid #000000;
-      margin: 40px 0;
-      font-style: italic;
-      font-size: 1.3rem;
-      line-height: 1.7;
-      color: #333333;
-    }
-
-    @media (max-width: 1200px) {
-      .slide {
-        padding: 60px 60px;
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
       }
 
-      h1 {
-        font-size: 3rem;
+      40% {
+        transform: translateY(-5px);
       }
 
-      .partnership-models {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .slide {
-        padding: 40px 30px;
-      }
-
-      .two-column,
-      .three-column {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .timeline {
-        flex-direction: column;
-        gap: 30px;
-      }
-
-      .timeline::before {
-        display: none;
-      }
-
-      h1 {
-        font-size: 2.5rem;
-      }
-
-      .title-slide h1 {
-        font-size: 3.5rem;
+      60% {
+        transform: translateY(-3px);
       }
     }
   </style>
 </head>
 
-<body>
-  <div class="presentation-container">
-    <div class="slide-indicator">
-      <span id="currentSlide">01</span> / <span id="totalSlides">17</span>
+<body class="bg-white text-black overflow-auto">
+  <div class="presentation-container w-screen h-screen relative p-12">
+    <!-- Slide Indicator -->
+    <div class="fixed top-10 right-10 bg-black text-white px-5 py-3 font-semibold text-sm tracking-wide z-50">
+      <span id="currentSlide">01</span> / <span id="totalSlides">15</span>
     </div>
 
     <!-- Slide 1: Title -->
-    <div class="slide active title-slide">
-      <div class="content">
-        <div class="logo">MAAK</div>
-        <h1>MAAK CORP</h1>
-        <p class="subtitle">Your Strategic Technology Partner</p>
-        <p class="company-info">From PowerMaps to Complete Digital Ecosystems</p>
-        <p class="company-info">Strategic Partnership Proposal • Tunisia • 2025</p>
-      </div>
+    <div class="slide active w-full h-full flex flex-col items-center justify-center text-center bg-white slide-enter">
+      <h1 class="text-8xl font-semibold text-black tracking-tight leading-none">MAAK CORP</h1>
+      <p class="text-2xl mb-10 text-gray-600 font-normal tracking-[6px]">Strategic Technology Partnership</p>
+      <p class="text-xl text-gray-500 font-medium tracking-wide mb-4">Introducing PowerMaps - Revolutionary P2P EV Charging Platform</p>
+      <p class="text-xl text-gray-500 font-medium tracking-wide">Strategic Partnership Proposal • 2025</p>
     </div>
 
-    <!-- Slide 2: The Success Behind PowerMaps -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Context</div>
+    <!-- Slide 2: MAAK CORP Introduction -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
         </div>
-        <div class="slide-number">02</div>
-      </div>
-      <div class="content">
-        <h1>The Success Behind PowerMaps</h1>
-        <div class="quote-section">
-          "You've seen PowerMaps in action... now meet the technology partner that built it."
-        </div>
-        <div class="benefits-grid">
-          <div class="benefit-card">
-            <span class="icon">⚡</span>
-            <h4>Revolutionary P2P Platform</h4>
-            <p>First peer-to-peer EV charging solution in Tunisia with enterprise-grade scalability</p>
-          </div>
-          <div class="benefit-card">
-            <span class="icon">🛠</span>
-            <h4>6 Years Proven Expertise</h4>
-            <p>Deep technical knowledge and market understanding across multiple industries</p>
-          </div>
-          <div class="benefit-card">
-            <span class="icon">🏗</span>
-            <h4>Enterprise Architecture</h4>
-            <p>Scalable, secure infrastructure designed for growth and high-performance demands</p>
-          </div>
-          <div class="benefit-card">
-            <span class="icon">🌍</span>
-            <h4>Local Market Mastery</h4>
-            <p>Native understanding of Tunisian business environment and regulatory landscape</p>
-          </div>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          Technology Partner
         </div>
       </div>
-    </div>
 
-    <!-- Slide 3: MAAK CORP Overview -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Company</div>
-        </div>
-        <div class="slide-number">03</div>
-      </div>
-      <div class="content">
-        <h1>MAAK CORP Overview</h1>
-        <div class="two-column">
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">Meet MAAK CORP</h1>
+
+        <div class="grid grid-cols-2 gap-20">
           <div>
-            <h3>Who We Are</h3>
-            <div class="card">
-              <h4>Established Excellence</h4>
-              <p>6+ years of proven delivery across diverse industries and client requirements</p>
-            </div>
-            <div class="card">
-              <h4>Global Reach</h4>
-              <p>Based in Tunisia, serving clients worldwide with 24/7 support capabilities</p>
-            </div>
-            <div class="card">
-              <h4>SAAS Specialization</h4>
-              <p>Highly scalable software-as-a-service solutions for modern business challenges</p>
-            </div>
-          </div>
-          <div>
-            <h3>Our Mission</h3>
-            <div class="card">
-              <h4>Cost-Effective Excellence</h4>
-              <p>Delivering enterprise-grade solutions at 70% cost savings through strategic innovation</p>
-            </div>
-            <div class="card">
-              <h4>Hybrid Approach</h4>
-              <p>Strategic combination of no-code tools and custom development for optimal results</p>
-            </div>
-            <div class="card">
-              <h4>Proven Results</h4>
-              <p>24+ completed projects with consistent on-time delivery and client satisfaction</p>
+            <h3 class="text-2xl font-semibold mb-6 text-black relative pl-5">
+              <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+              Who We Are
+            </h3>
+            <div class="space-y-5">
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Enterprise Software Specialists</h4>
+                <p class="text-gray-700 text-base leading-relaxed">6+ years delivering scalable SAAS solutions with 70% cost savings for global clients</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Proven Track Record</h4>
+                <p class="text-gray-700 text-base leading-relaxed">24+ completed projects with 100% on-time delivery and client satisfaction</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Global Reach</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Tunisia-based with international clients including Netherlands and enterprise partnerships</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number">24+</div>
-            <div class="stat-label">Completed Projects</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">6+</div>
-            <div class="stat-label">Years Experience</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">70%</div>
-            <div class="stat-label">Cost Savings</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Client Satisfaction</div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Slide 4: Portfolio Highlights -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Portfolio</div>
-        </div>
-        <div class="slide-number">04</div>
-      </div>
-      <div class="content">
-        <h1>Our Proven Track Record</h1>
-        <div class="three-column">
-          <div class="card">
-            <h4>PowerMaps</h4>
-            <p><strong>P2P EV Charging Platform</strong></p>
-            <ul>
-              <li>Full-stack development</li>
-              <li>Angular + NestJS + MySQL</li>
-              <li>AWS infrastructure</li>
-              <li>Docker deployment</li>
-              <li>Real-time algorithms</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h4>Planifi ERP</h4>
-            <p><strong>Tender Management SAAS</strong></p>
-            <ul>
-              <li>Multi-tenant architecture</li>
-              <li>Self-hosted & cloud options</li>
-              <li>Angular frontend</li>
-              <li>MySQL backend</li>
-              <li>Bidding workflow automation</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h4>VAGA CRM</h4>
-            <p><strong>Tunisian Business CRM</strong></p>
-            <ul>
-              <li>Custom workflow automation</li>
-              <li>Multi-platform deployment</li>
-              <li>Integrated analytics</li>
-              <li>React + Angular hybrid</li>
-              <li>Cloud-native design</li>
-            </ul>
-          </div>
-        </div>
-        <div class="highlight-section">
-          <h3>Additional Innovations</h3>
-          <p><strong>GitHub Groups:</strong> Chrome extension for repository management with TypeScript implementation</p>
-          <p><strong>Various Client Solutions:</strong> Custom CRM systems, business automation tools, and enterprise applications across multiple industries</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slide 5: Technology Excellence -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Technology</div>
-        </div>
-        <div class="slide-number">05</div>
-      </div>
-      <div class="content">
-        <h1>Technology Excellence</h1>
-        <div class="tech-stack">
-          <div class="stack-category">
-            <h4>Frontend Development</h4>
-            <ul>
-              <li>React & Next.js Development</li>
-              <li>Angular Enterprise Applications</li>
-              <li>Responsive UI/UX Design</li>
-              <li>Progressive Web Apps</li>
-              <li>Design Systems & Wireframing</li>
-            </ul>
-          </div>
-          <div class="stack-category">
-            <h4>Backend & Infrastructure</h4>
-            <ul>
-              <li>Node.js Microservices</li>
-              <li>Database Design & Optimization</li>
-              <li>API Development & Integration</li>
-              <li>Cloud-Native Architecture</li>
-              <li>Security Implementation</li>
-            </ul>
-          </div>
-          <div class="stack-category">
-            <h4>DevOps & Deployment</h4>
-            <ul>
-              <li>AWS Infrastructure Management</li>
-              <li>Docker Containerization</li>
-              <li>CI/CD Pipeline Automation</li>
-              <li>Monitoring & Auto-scaling</li>
-              <li>Cloud Optimization</li>
-            </ul>
-          </div>
-          <div class="stack-category">
-            <h4>Third-Party Integrations</h4>
-            <ul>
-              <li>Authentication Systems (Auth0)</li>
-              <li>Payment Gateway Integration</li>
-              <li>Email Services & Automation</li>
-              <li>Media Management Solutions</li>
-              <li>Cost Optimization Tools</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slide 6: Strategic Services -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Services</div>
-        </div>
-        <div class="slide-number">06</div>
-      </div>
-      <div class="content">
-        <h1>Complete Digital Transformation</h1>
-        <div class="two-column">
           <div>
-            <h3>SAAS Development</h3>
-            <div class="card">
-              <h4>Custom Enterprise Applications</h4>
-              <p>Tailored solutions for complex business processes and industry-specific requirements</p>
-            </div>
-            <div class="card">
-              <h4>Multi-Tenant Architectures</h4>
-              <p>Scalable SAAS platforms supporting multiple clients with data isolation and customization</p>
-            </div>
-            <div class="card">
-              <h4>API-First Design</h4>
-              <p>Modern architecture enabling seamless integrations and future extensibility</p>
-            </div>
-          </div>
-          <div>
-            <h3>Technical Leadership</h3>
-            <div class="card">
-              <h4>Team Mentoring & Code Review</h4>
-              <p>Knowledge transfer and quality assurance through experienced technical guidance</p>
-            </div>
-            <div class="card">
-              <h4>Development Standards Implementation</h4>
-              <p>Best practices establishment ensuring maintainable, scalable codebases</p>
-            </div>
-            <div class="card">
-              <h4>Agile Project Management</h4>
-              <p>Iterative development approach with regular feedback cycles and rapid delivery</p>
+            <h3 class="text-2xl font-semibold mb-6 text-black relative pl-5">
+              <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+              Our Expertise
+            </h3>
+            <div class="space-y-5">
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Full-Stack Development</h4>
+                <p class="text-gray-700 text-base leading-relaxed">React, Angular, Node.js, AWS infrastructure with enterprise-grade security</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Strategic Innovation</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Hybrid approach combining custom development with no-code optimization</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Enterprise Quality</h4>
+                <p class="text-gray-700 text-base leading-relaxed">ISO standards, security audits, and comprehensive testing protocols</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Slide 7: Enterprise Client Success -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Clients</div>
+    <!-- Slide 3: MAAK CORP Portfolio -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
         </div>
-        <div class="slide-number">07</div>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          Technology Partner
+        </div>
       </div>
-      <div class="content">
-        <h1>Proven International Partnerships</h1>
-        <div class="two-column">
-          <div>
-            <h3>WinIntelligence (Netherlands)</h3>
-            <div class="card">
-              <h4>Full-Stack Feature Development</h4>
-              <p>Delivered key product features with autonomous execution and minimal supervision requirements</p>
-            </div>
-            <div class="card">
-              <h4>Performance Optimization</h4>
-              <p>Implemented secure, thoroughly tested solutions with significant performance improvements</p>
-            </div>
-            <div class="card">
-              <h4>Multi-Technology Expertise</h4>
-              <p>Angular, React, Next.js, and Node.js implementations across multiple product lines</p>
-            </div>
+
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">Our Proven Success</h1>
+
+        <div class="grid grid-cols-4 gap-8 mb-12">
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-5xl font-black mb-2">24+</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Completed Projects</div>
           </div>
-          <div>
-            <h3>DivaSoftware (Tunisia)</h3>
-            <div class="card">
-              <h4>Technical Leadership</h4>
-              <p>Led and managed a team of 6 developers building enterprise-scale business solutions</p>
-            </div>
-            <div class="card">
-              <h4>Enterprise Solutions</h4>
-              <p>Custom ERP and CRM implementations with comprehensive project roadmap development</p>
-            </div>
-            <div class="card">
-              <h4>Quality Assurance</h4>
-              <p>Oversaw project execution and quality throughout the entire development lifecycle</p>
-            </div>
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-5xl font-black mb-2">70%</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Cost Savings</div>
+          </div>
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-5xl font-black mb-2">100%</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">On-Time Delivery</div>
+          </div>
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-5xl font-black mb-2">6+</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Years Experience</div>
           </div>
         </div>
-        <div class="highlight-section">
-          <h3>Consistent Results</h3>
-          <p>High-performance, secure solutions delivered with minimal supervision across international partnerships. Proven ability to work autonomously while maintaining enterprise-grade quality
-            standards.</p>
+
+        <div class="grid grid-cols-3 gap-16">
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <h4 class="text-xl font-bold mb-2">Planifi ERP</h4>
+            <p class="font-semibold mb-4">Tender Management SAAS</p>
+            <ul class="space-y-1.5 text-sm text-gray-700">
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Multi-tenant architecture</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Angular + MySQL backend</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Automated bidding workflows</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Self-hosted & cloud deployment</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <h4 class="text-xl font-bold mb-2">VAGA CRM</h4>
+            <p class="font-semibold mb-4">Business Management Platform</p>
+            <ul class="space-y-1.5 text-sm text-gray-700">
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Custom workflow automation</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Multi-platform deployment</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Integrated analytics dashboard</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>React + Angular hybrid</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <h4 class="text-xl font-bold mb-2">International Clients</h4>
+            <p class="font-semibold mb-4">WinIntelligence (Netherlands)</p>
+            <ul class="space-y-1.5 text-sm text-gray-700">
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Full-stack feature development</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Performance optimization</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Angular, React, Next.js</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Autonomous execution</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Slide 8: The MAAK CORP Advantage -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Advantage</div>
+    <!-- Slide 4: MAAK CORP Services -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
         </div>
-        <div class="slide-number">08</div>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          Services
+        </div>
       </div>
-      <div class="content">
-        <h1>Why Leading Companies Choose Us</h1>
-        <div class="three-column">
+
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">Strategic Partnership Services</h1>
+
+        <div class="grid grid-cols-2 gap-8">
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block icon-bounce">🏗</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Enterprise SAAS Development</h4>
+            <p class="text-gray-700 leading-relaxed">Custom enterprise applications with scalable architecture and multi-tenant capabilities</p>
+          </div>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block icon-bounce">⚡</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Rapid Deployment</h4>
+            <p class="text-gray-700 leading-relaxed">3x faster time-to-market through agile methodologies and pre-built components</p>
+          </div>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block icon-bounce">🛡</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Security & Compliance</h4>
+            <p class="text-gray-700 leading-relaxed">Enterprise-grade security with GDPR compliance and industry standards implementation</p>
+          </div>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block icon-bounce">📈</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Business Intelligence</h4>
+            <p class="text-gray-700 leading-relaxed">Advanced analytics, reporting, and data-driven insights for strategic decision making</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: Transition to PowerMaps -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex-1 flex flex-col justify-center items-center text-center">
+        <h1 class="text-6xl font-black mb-8 text-black tracking-tight leading-tight">Introducing PowerMaps</h1>
+        <p class="text-2xl mb-10 text-gray-600 font-normal tracking-wide">MAAK CORP's Revolutionary P2P EV Charging Platform</p>
+
+        <div class="bg-white p-12 border-2 border-black max-w-5xl">
+          <h3 class="text-3xl font-semibold mb-6 text-black relative pl-5">
+            <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+            The Challenge We Solved
+          </h3>
+          <p class="text-xl text-gray-700 leading-relaxed">Range anxiety remains the #1 barrier to EV adoption. PowerMaps eliminates this through Tunisia's first peer-to-peer charging network,
+            connecting EV drivers directly with charging station owners.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: PowerMaps Overview -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
+        </div>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          PowerMaps
+        </div>
+      </div>
+
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">PowerMaps Platform Overview</h1>
+
+        <div class="grid grid-cols-4 gap-8 mb-12">
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-5xl font-black mb-2">60</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Current Charging Points</div>
+          </div>
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-5xl font-black mb-2">300+</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Electric Vehicles</div>
+          </div>
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-5xl font-black mb-2">50K</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">EV Target 2030</div>
+          </div>
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-5xl font-black mb-2">0</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Existing P2P Platforms</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-8">
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">⚡</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Eliminate Range Anxiety</h4>
+            <p class="text-gray-700 leading-relaxed">Revolutionary P2P network solving the #1 barrier to EV adoption with community-driven charging</p>
+          </div>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">🎯</span>
+            <h4 class="text-xl font-bold mb-3 text-black">First-Mover Advantage</h4>
+            <p class="text-gray-700 leading-relaxed">12-18 months ahead of competition as Tunisia's only comprehensive P2P charging platform</p>
+          </div>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">🌍</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Market Leadership</h4>
+            <p class="text-gray-700 leading-relaxed">Position your dealership as the premium EV partner with exclusive access to charging ecosystem</p>
+          </div>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">💎</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Revenue Diversification</h4>
+            <p class="text-gray-700 leading-relaxed">Create new recurring revenue streams beyond traditional vehicle sales</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: PowerMaps Technology Features -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
+        </div>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          Technology
+        </div>
+      </div>
+
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">Advanced Platform Features</h1>
+
+        <div class="grid grid-cols-2 gap-20">
           <div>
-            <h3>Cost Optimization</h3>
-            <div class="card">
-              <h4>70% Savings vs Traditional</h4>
-              <p>Strategic approach combining efficiency with quality</p>
-            </div>
-            <div class="card">
-              <h4>Strategic No-Code Integration</h4>
-              <p>Optimal balance of custom and no-code solutions</p>
-            </div>
-            <div class="card">
-              <h4>Transparent Pricing</h4>
-              <p>Clear, predictable cost models with no hidden fees</p>
+            <h3 class="text-2xl font-semibold mb-6 text-black relative pl-5">
+              <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+              AI-Powered Intelligence
+            </h3>
+            <div class="space-y-5">
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Predictive Route Planning</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Smart algorithms optimize routes with real-time charging point availability and demand prediction</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Real-Time Monitoring</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Live tracking of all charging networks with intelligent notifications and automatic reservations</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Unified Payment System</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Single secure payment solution for the entire Tunisian charging ecosystem</p>
+              </div>
             </div>
           </div>
+
           <div>
-            <h3>Speed to Market</h3>
-            <div class="card">
-              <h4>Rapid Prototyping</h4>
-              <p>Quick validation and iteration cycles</p>
-            </div>
-            <div class="card">
-              <h4>Agile Methodology</h4>
-              <p>Flexible, responsive development approach</p>
-            </div>
-            <div class="card">
-              <h4>Pre-Built Components</h4>
-              <p>Accelerated development through reusable libraries</p>
+            <h3 class="text-2xl font-semibold mb-6 text-black relative pl-5">
+              <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+              Community Platform
+            </h3>
+            <div class="space-y-5">
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Native Mobile Apps</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Premium iOS/Android experience with offline capabilities and smart synchronization</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Social Charging Network</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Direct messaging, community ratings, and experience sharing between users</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Advanced Battery Analytics</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Health monitoring, optimization recommendations, and lifespan predictions</p>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 8: Partnership Benefits -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
+        </div>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          Partnership
+        </div>
+      </div>
+
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">Strategic Partnership Benefits</h1>
+
+        <div class="grid grid-cols-2 gap-20">
           <div>
-            <h3>Enterprise Quality</h3>
-            <div class="card">
-              <h4>Rigorous Testing</h4>
-              <p>Comprehensive quality assurance protocols</p>
+            <h3 class="text-2xl font-semibold mb-6 text-black relative pl-5">
+              <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+              For Your Dealership
+            </h3>
+            <div class="space-y-5">
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Sales Acceleration</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Eliminate the #1 customer objection with comprehensive charging solution, increasing conversion rates by 40-60%</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Competitive Differentiation</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Become the only dealership offering complete EV ecosystem with P2P charging access</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Customer Lifetime Value</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Build lasting relationships through ongoing charging services and community engagement</p>
+              </div>
             </div>
-            <div class="card">
-              <h4>Security-First Architecture</h4>
-              <p>Built-in security from ground up</p>
-            </div>
-            <div class="card">
-              <h4>Scalable Infrastructure</h4>
-              <p>Designed for growth and high performance</p>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-6 text-black relative pl-5">
+              <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+              For Your Customers
+            </h3>
+            <div class="space-y-5">
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Complete Peace of Mind</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Never worry about charging again with comprehensive P2P network coverage</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Cost Optimization</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Access competitive community pricing and reduce charging costs significantly</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Premium Experience</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Exclusive support and priority access as your dealership's valued customers</p>
+              </div>
             </div>
           </div>
         </div>
@@ -934,444 +445,424 @@
     </div>
 
     <!-- Slide 9: Partnership Models -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Partnership</div>
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
         </div>
-        <div class="slide-number">09</div>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          Models
+        </div>
       </div>
-      <div class="content">
-        <h1>Flexible Partnership Models</h1>
-        <div class="partnership-models">
-          <div class="model-card">
-            <div class="model-number">1</div>
-            <h4>Project-Based</h4>
-            <p>Complete end-to-end delivery with fixed scope and timeline</p>
-            <ul>
-              <li>Defined deliverables</li>
-              <li>Fixed pricing model</li>
-              <li>Milestone-based payments</li>
-              <li>Full project ownership</li>
+
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">Strategic Partnership Models</h1>
+
+        <div class="grid grid-cols-3 gap-10">
+          <div class="bg-white p-10 border-2 border-black text-center transition-all duration-300 hover:bg-black hover:text-white group">
+            <div class="w-12 h-12 bg-black text-white flex items-center justify-center mx-auto mb-5 font-black text-2xl group-hover:bg-white group-hover:text-black transition-all duration-300">
+              1
+            </div>
+            <h4 class="text-xl font-bold mb-5">Complete Integration</h4>
+            <ul class="text-left space-y-2 text-sm">
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Native vehicle integration</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Exclusive P2P network access</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Custom UI/UX branding</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Premium customer support</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Dynamic community pricing</li>
             </ul>
           </div>
-          <div class="model-card">
-            <div class="model-number">2</div>
-            <h4>Dedicated Team</h4>
-            <p>Extended team model with dedicated resources</p>
-            <ul>
-              <li>Full-time allocation</li>
-              <li>Direct team management</li>
-              <li>Flexible engagement terms</li>
-              <li>Seamless integration</li>
+
+          <div class="bg-white p-10 border-2 border-black text-center transition-all duration-300 hover:bg-black hover:text-white group">
+            <div class="w-12 h-12 bg-black text-white flex items-center justify-center mx-auto mb-5 font-black text-2xl group-hover:bg-white group-hover:text-black transition-all duration-300">
+              2
+            </div>
+            <h4 class="text-xl font-bold mb-5">White-Label Solution</h4>
+            <ul class="text-left space-y-2 text-sm">
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Branded dealership app</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Exclusive customer community</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Direct relationship management</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Premium positioning</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Custom feature development</li>
             </ul>
           </div>
-          <div class="model-card">
-            <div class="model-number">3</div>
-            <h4>Technical Consultancy</h4>
-            <p>Strategic guidance and architectural leadership</p>
-            <ul>
-              <li>Technology roadmapping</li>
-              <li>Code review & optimization</li>
-              <li>Team mentoring</li>
-              <li>Best practices implementation</li>
+
+          <div class="bg-white p-10 border-2 border-black text-center transition-all duration-300 hover:bg-black hover:text-white group">
+            <div class="w-12 h-12 bg-black text-white flex items-center justify-center mx-auto mb-5 font-black text-2xl group-hover:bg-white group-hover:text-black transition-all duration-300">
+              3
+            </div>
+            <h4 class="text-xl font-bold mb-5">Strategic Alliance</h4>
+            <ul class="text-left space-y-2 text-sm">
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Revenue sharing model</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Co-marketing initiatives</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Data insights sharing</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Collaborative expansion</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-current rounded-full"></span>Regional market leadership</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Slide 10: Development Process -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Process</div>
+    <!-- Slide 10: Implementation Timeline -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
         </div>
-        <div class="slide-number">10</div>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          Timeline
+        </div>
       </div>
-      <div class="content">
-        <h1>Our Proven Development Process</h1>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h4>Discovery</h4>
-            <div class="phase-duration">Week 1-2</div>
-            <ul>
-              <li>Requirements analysis</li>
-              <li>Technical feasibility</li>
-              <li>Architecture planning</li>
-              <li>Resource allocation</li>
+
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">Implementation Roadmap</h1>
+
+        <div class="flex justify-center items-start relative">
+          <div class="absolute top-8 left-1/4 right-1/4 h-0.5 bg-black z-0"></div>
+
+          <div class="bg-white p-8 border-2 border-black text-center relative z-10 flex-1 mx-3 max-w-xs">
+            <div class="absolute -top-2.5 left-1/2 transform -translate-x-1/2 w-5 h-5 bg-black border-4 border-white"></div>
+            <h4 class="text-xl font-bold mb-2 text-black">Phase Alpha</h4>
+            <div class="text-gray-600 text-sm mb-4 font-medium">Months 1-3</div>
+            <ul class="text-left space-y-1.5 text-sm text-gray-700">
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Technical integration setup</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Payment system integration</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Team training programs</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>VIP customer pilot testing</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Performance optimization</li>
             </ul>
           </div>
-          <div class="timeline-item">
-            <h4>Design & Planning</h4>
-            <div class="phase-duration">Week 2-3</div>
-            <ul>
-              <li>UI/UX wireframes</li>
-              <li>Database design</li>
-              <li>API specifications</li>
-              <li>Development roadmap</li>
+
+          <div class="bg-white p-8 border-2 border-black text-center relative z-10 flex-1 mx-3 max-w-xs">
+            <div class="absolute -top-2.5 left-1/2 transform -translate-x-1/2 w-5 h-5 bg-black border-4 border-white"></div>
+            <h4 class="text-xl font-bold mb-2 text-black">Phase Beta</h4>
+            <div class="text-gray-600 text-sm mb-4 font-medium">Months 4-6</div>
+            <ul class="text-left space-y-1.5 text-sm text-gray-700">
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Market launch execution</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Customer acquisition campaign</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Mass onboarding process</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>KPI monitoring & optimization</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Continuous UX improvements</li>
             </ul>
           </div>
-          <div class="timeline-item">
-            <h4>Development</h4>
-            <div class="phase-duration">Week 4-12</div>
-            <ul>
-              <li>Agile sprints</li>
-              <li>Regular demos</li>
-              <li>Continuous testing</li>
-              <li>Client feedback cycles</li>
-            </ul>
-          </div>
-          <div class="timeline-item">
-            <h4>Deployment</h4>
-            <div class="phase-duration">Week 12-14</div>
-            <ul>
-              <li>Production deployment</li>
-              <li>Performance optimization</li>
-              <li>User training</li>
-              <li>Documentation delivery</li>
+
+          <div class="bg-white p-8 border-2 border-black text-center relative z-10 flex-1 mx-3 max-w-xs">
+            <div class="absolute -top-2.5 left-1/2 transform -translate-x-1/2 w-5 h-5 bg-black border-4 border-white"></div>
+            <h4 class="text-xl font-bold mb-2 text-black">Phase Gamma</h4>
+            <div class="text-gray-600 text-sm mb-4 font-medium">Months 7-12</div>
+            <ul class="text-left space-y-1.5 text-sm text-gray-700">
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Geographic expansion</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Advanced AI features</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>B2B fleet programs</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Regional scaling preparation</li>
+              <li class="relative pl-5"><span class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-black rounded-full"></span>Platform innovation cycle</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Slide 11: Quality Assurance -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Quality</div>
+    <!-- Slide 11: Competitive Advantages -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
         </div>
-        <div class="slide-number">11</div>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          Advantage
+        </div>
       </div>
-      <div class="content">
-        <h1>Enterprise-Grade Quality Standards</h1>
-        <div class="two-column">
+
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">Unmatched Competitive Advantages</h1>
+
+        <div class="grid grid-cols-2 gap-20">
           <div>
-            <h3>Testing Excellence</h3>
-            <div class="card">
-              <h4>Automated Testing Suite</h4>
-              <p>Unit, integration, and end-to-end testing with comprehensive coverage</p>
-            </div>
-            <div class="card">
-              <h4>Performance Optimization</h4>
-              <p>Load testing, performance monitoring, and optimization strategies</p>
-            </div>
-            <div class="card">
-              <h4>Security Auditing</h4>
-              <p>Vulnerability assessments and security best practices implementation</p>
+            <h3 class="text-2xl font-semibold mb-6 text-black relative pl-5">
+              <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+              Market Dominance
+            </h3>
+            <div class="space-y-5">
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">First Mover Advantage</h4>
+                <p class="text-gray-700 text-base leading-relaxed">12-18 months exclusivity window before international competitors enter Tunisian market</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Local Market Expertise</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Deep understanding of Tunisian regulations, consumer behavior, and infrastructure challenges</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Collaborative Ecosystem</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Partnership approach with dealers and operators creates strong market barriers</p>
+              </div>
             </div>
           </div>
+
           <div>
-            <h3>Code Quality</h3>
-            <div class="card">
-              <h4>Code Review Process</h4>
-              <p>Peer reviews and automated code quality checks for maintainability</p>
+            <h3 class="text-2xl font-semibold mb-6 text-black relative pl-5">
+              <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+              Technical Excellence
+            </h3>
+            <div class="space-y-5">
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Asset-Light Strategy</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Optimized business model without heavy infrastructure investment, maximizing ROI</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Rapid Deployment</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Mature, tested platform ready for immediate market launch</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Scalable Architecture</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Cloud-native design supporting exponential user growth without technical friction</p>
+              </div>
             </div>
-            <div class="card">
-              <h4>Documentation Standards</h4>
-              <p>Comprehensive technical and user documentation for all deliverables</p>
-            </div>
-            <div class="card">
-              <h4>Version Control</h4>
-              <p>Git workflows with branching strategies and deployment automation</p>
-            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Slide 12: Investment & ROI -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Investment</div>
+    <!-- Slide 12: Expected ROI & Impact -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
         </div>
-        <div class="slide-number">12</div>
-      </div>
-      <div class="content">
-        <h1>Smart Investment, Exceptional ROI</h1>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number">70%</div>
-            <div class="stat-label">Cost Savings</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">3x</div>
-            <div class="stat-label">Faster Delivery</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label">Support Coverage</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">On-Time Delivery</div>
-          </div>
-        </div>
-        <div class="highlight-section">
-          <h3>Value Proposition</h3>
-          <p>Access enterprise-grade development capabilities at startup-friendly pricing. Our strategic approach combines cutting-edge technology with cost optimization, delivering solutions that
-            scale with your business growth while maintaining exceptional quality standards.</p>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          ROI
         </div>
       </div>
-    </div>
 
-    <!-- Slide 13: Technology Roadmap -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Roadmap</div>
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">Expected Business Impact</h1>
+
+        <div class="grid grid-cols-4 gap-8 mb-12">
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-4xl font-black mb-2">40-60%</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Sales Conversion Increase</div>
+          </div>
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-4xl font-black mb-2">12-18</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Months Market Exclusivity</div>
+          </div>
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-4xl font-black mb-2">100%</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Range Anxiety Elimination</div>
+          </div>
+          <div class="bg-white border-2 border-black p-10 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-4xl font-black mb-2">3x</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Customer Lifetime Value</div>
+          </div>
         </div>
-        <div class="slide-number">13</div>
-      </div>
-      <div class="content">
-        <h1>Future-Ready Technology Stack</h1>
-        <div class="tech-stack">
-          <div class="stack-category">
-            <h4>Current Expertise</h4>
-            <ul>
-              <li>React, Angular, Next.js</li>
-              <li>Node.js, NestJS, Express</li>
-              <li>MySQL, PostgreSQL, MongoDB</li>
-              <li>AWS, Docker, Kubernetes</li>
-              <li>TypeScript, JavaScript ES6+</li>
-            </ul>
+        <h3 class="text-3xl font-semibold mb-6 text-black relative pl-5">
+          <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+          Strategic Value Proposition
+        </h3>
+        <div class="grid grid-cols-2 gap-8">
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">🚀</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Sales Acceleration</h4>
+            <p class="text-gray-700 leading-relaxed">Eliminate primary customer objection and accelerate EV adoption with comprehensive charging solution</p>
           </div>
-          <div class="stack-category">
-            <h4>Emerging Technologies</h4>
-            <ul>
-              <li>AI/ML Integration Capabilities</li>
-              <li>Blockchain Development</li>
-              <li>IoT Platform Development</li>
-              <li>Progressive Web Apps</li>
-              <li>Serverless Architecture</li>
-            </ul>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">👑</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Market Leadership</h4>
+            <p class="text-gray-700 leading-relaxed">Establish uncontested position as premium EV dealership with exclusive charging ecosystem</p>
           </div>
-          <div class="stack-category">
-            <h4>Industry Standards</h4>
-            <ul>
-              <li>GDPR Compliance Implementation</li>
-              <li>ISO 27001 Security Standards</li>
-              <li>OWASP Security Guidelines</li>
-              <li>Agile/Scrum Methodologies</li>
-              <li>DevOps Best Practices</li>
-            </ul>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">💼</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Revenue Diversification</h4>
+            <p class="text-gray-700 leading-relaxed">Create sustainable recurring revenue streams beyond traditional vehicle sales</p>
           </div>
-          <div class="stack-category">
-            <h4>Continuous Learning</h4>
-            <ul>
-              <li>Technology trend monitoring</li>
-              <li>Regular team upskilling</li>
-              <li>Industry certification programs</li>
-              <li>Open source contributions</li>
-              <li>Innovation R&D initiatives</li>
-            </ul>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">🌍</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Regional Expansion</h4>
+            <p class="text-gray-700 leading-relaxed">Proven platform foundation for expansion into North African markets</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Slide 14: Support & Maintenance -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Support</div>
+    <!-- Slide 13: Next Steps & Action Plan -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
         </div>
-        <div class="slide-number">14</div>
-      </div>
-      <div class="content">
-        <h1>Comprehensive Support Ecosystem</h1>
-        <div class="benefits-grid">
-          <div class="benefit-card">
-            <span class="icon">🕒</span>
-            <h4>24/7 Monitoring</h4>
-            <p>Proactive system monitoring with automated alerts and rapid response protocols</p>
-          </div>
-          <div class="benefit-card">
-            <span class="icon">🔧</span>
-            <h4>Maintenance Packages</h4>
-            <p>Regular updates, security patches, and performance optimization services</p>
-          </div>
-          <div class="benefit-card">
-            <span class="icon">📞</span>
-            <h4>Priority Support</h4>
-            <p>Dedicated support channel with guaranteed response times for critical issues</p>
-          </div>
-          <div class="benefit-card">
-            <span class="icon">📈</span>
-            <h4>Scalability Planning</h4>
-            <p>Growth-oriented architecture reviews and scaling recommendations</p>
-          </div>
-          <div class="benefit-card">
-            <span class="icon">🔒</span>
-            <h4>Security Updates</h4>
-            <p>Regular security assessments and immediate vulnerability patching</p>
-          </div>
-          <div class="benefit-card">
-            <span class="icon">📊</span>
-            <h4>Performance Analytics</h4>
-            <p>Detailed reporting and insights for system optimization and planning</p>
-          </div>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          Action Plan
         </div>
       </div>
-    </div>
 
-    <!-- Slide 15: Success Metrics -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Metrics</div>
-        </div>
-        <div class="slide-number">15</div>
-      </div>
-      <div class="content">
-        <h1>Measurable Success Indicators</h1>
-        <div class="two-column">
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">Strategic Action Plan</h1>
+
+        <div class="grid grid-cols-2 gap-20">
           <div>
-            <h3>Performance Metrics</h3>
-            <div class="card">
-              <h4>Delivery Excellence</h4>
-              <p>100% on-time project delivery with consistent quality standards</p>
-            </div>
-            <div class="card">
-              <h4>Client Satisfaction</h4>
-              <p>Average 4.9/5 client rating across all completed projects</p>
-            </div>
-            <div class="card">
-              <h4>System Uptime</h4>
-              <p>99.9% uptime guarantee with robust monitoring and backup systems</p>
+            <h3 class="text-2xl font-semibold mb-6 text-black relative pl-5">
+              <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+              Immediate Priorities - 60 Days
+            </h3>
+            <div class="space-y-5">
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Executive Demonstration</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Comprehensive platform showcase with live simulation of customer experience</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Technical Integration Planning</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Define integration specifications with your existing systems and processes</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Commercial Framework</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Finalize partnership terms including territorial exclusivity and revenue models</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Implementation Roadmap</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Detailed operational planning with critical milestones and resource allocation</p>
+              </div>
             </div>
           </div>
+
           <div>
-            <h3>Business Impact</h3>
-            <div class="card">
-              <h4>Cost Efficiency</h4>
-              <p>Average 70% cost savings compared to traditional development approaches</p>
-            </div>
-            <div class="card">
-              <h4>Time to Market</h4>
-              <p>3x faster deployment through agile methodologies and optimized workflows</p>
-            </div>
-            <div class="card">
-              <h4>Scalability Success</h4>
-              <p>All delivered solutions successfully scaled with client business growth</p>
+            <h3 class="text-2xl font-semibold mb-6 text-black relative pl-5">
+              <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+              Partnership Structure
+            </h3>
+            <div class="space-y-5">
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Service Level Agreements</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Premium SLA with performance guarantees, uptime commitments, and dedicated support</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Custom Development</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Tailored features for your specific vehicle models and dealership requirements</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Training & Support</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Comprehensive team training and premium technical assistance programs</p>
+              </div>
+              <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+                <h4 class="text-xl font-bold mb-4 text-black">Market Exclusivity</h4>
+                <p class="text-gray-700 text-base leading-relaxed">Territorial protection with expansion rights across North African markets</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Slide 16: Getting Started -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Action</div>
+    <!-- Slide 14: Support & Partnership Excellence -->
+    <div class="slide w-full h-full hidden flex-col bg-white slide-enter">
+      <div class="flex items-center gap-5  border-b-2 border-black pb-4">
+        <div class="w-16 h-16 bg-black text-white flex items-center justify-center font-black text-lg tracking-tight">
+          MAAK
         </div>
-        <div class="slide-number">16</div>
+        <div class="bg-white border-2 border-black px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+          Support
+        </div>
       </div>
-      <div class="content">
-        <h1>Ready to Transform Your Vision?</h1>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h4>Initial Consultation</h4>
-            <div class="phase-duration">Week 1</div>
-            <ul>
-              <li>Project scope discussion</li>
-              <li>Technical requirements</li>
-              <li>Budget planning</li>
-              <li>Timeline estimation</li>
-            </ul>
+
+      <div class="flex-1 flex flex-col justify-center">
+        <h1 class="text-6xl font-black mb-10 text-black tracking-tight leading-tight">Partnership Excellence & Support</h1>
+
+        <div class="grid grid-cols-2 gap-8">
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">🕒</span>
+            <h4 class="text-xl font-bold mb-3 text-black">24/7 Technical Support</h4>
+            <p class="text-gray-700 leading-relaxed">Round-the-clock monitoring and rapid response protocols with dedicated support team</p>
           </div>
-          <div class="timeline-item">
-            <h4>Proposal & Agreement</h4>
-            <div class="phase-duration">Week 2</div>
-            <ul>
-              <li>Detailed project proposal</li>
-              <li>Resource allocation plan</li>
-              <li>Contract finalization</li>
-              <li>Team introduction</li>
-            </ul>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">🔧</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Continuous Platform Evolution</h4>
+            <p class="text-gray-700 leading-relaxed">Regular updates, feature enhancements, and performance optimizations</p>
           </div>
-          <div class="timeline-item">
-            <h4>Project Kickoff</h4>
-            <div class="phase-duration">Week 3</div>
-            <ul>
-              <li>Development environment setup</li>
-              <li>Communication protocols</li>
-              <li>First sprint planning</li>
-              <li>Milestone definitions</li>
-            </ul>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">📊</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Business Intelligence Dashboard</h4>
+            <p class="text-gray-700 leading-relaxed">Real-time analytics and insights for strategic decision making and performance tracking</p>
           </div>
-        </div>
-        <div class="highlight-section">
-          <h3>Next Steps</h3>
-          <p>Schedule a free consultation to discuss your project requirements and discover how MAAK CORP can accelerate your digital transformation journey with cost-effective, enterprise-grade
-            solutions.</p>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">🎓</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Team Training Programs</h4>
+            <p class="text-gray-700 leading-relaxed">Comprehensive certification programs and ongoing skill development for your team</p>
+          </div>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">🔒</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Enterprise Security</h4>
+            <p class="text-gray-700 leading-relaxed">Bank-level security protocols with regular audits and compliance certifications</p>
+          </div>
+
+          <div class="bg-white p-8 border-2 border-black transition-all duration-300 hover-lift">
+            <span class="text-4xl font-black mb-4 block">🌟</span>
+            <h4 class="text-xl font-bold mb-3 text-black">Innovation Partnership</h4>
+            <p class="text-gray-700 leading-relaxed">Collaborative development of new features and solutions based on market feedback</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Slide 17: Contact & Thank You -->
-    <div class="slide">
-      <div class="slide-header">
-        <div class="brand-header">
-          <div class="logo">MAAK</div>
-          <div class="company-tag">Contact</div>
+    <!-- Slide 15: Call to Action -->
+    <div class="slide w-full h-full hidden flex-col items-center justify-center text-center bg-white slide-enter">
+      <div class="flex-1 flex flex-col justify-center items-center">
+        <h1 class="text-6xl font-black mb-8 text-black tracking-tight leading-tight">Strategic Partnership</h1>
+        <p class="text-2xl mb-10 text-gray-600 font-normal tracking-wide">MAAK CORP × PowerMaps × Your Success</p>
+
+        <div class="bg-white p-12 border-2 border-black mb-10 max-w-5xl">
+          <h3 class="text-3xl font-semibold mb-6 text-black relative pl-5">
+            <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-black"></span>
+            Ready to Lead the EV Revolution?
+          </h3>
+          <p class="text-xl text-gray-700 leading-relaxed mb-4">
+            <strong>Next Step:</strong> Schedule your executive demonstration and discover how PowerMaps can accelerate your EV sales while establishing uncontested market leadership.
+          </p>
+          <p class="text-lg text-gray-600 mb-2"><strong>Contact:</strong> MAAK CORP Strategic Partnerships Team</p>
+          <p class="text-lg text-gray-600"><strong>Timeline:</strong> First-mover advantage window closing in 12-18 months</p>
         </div>
-        <div class="slide-number">17</div>
-      </div>
-      <div class="content">
-        <h1>Let's Build Something Amazing Together</h1>
-        <div class="two-column">
-          <div>
-            <h3>Contact Information</h3>
-            <div class="card">
-              <h4>MAAK CORP</h4>
-              <p><strong>Location:</strong> Tunisia</p>
-              <p><strong>Global Service:</strong> 24/7 Support</p>
-              <p><strong>Languages:</strong> Arabic, French, English</p>
-            </div>
-            <div class="card">
-              <h4>Get In Touch</h4>
-              <p>Ready to discuss your project? We're here to help transform your vision into reality.</p>
-            </div>
+
+        <div class="grid grid-cols-4 gap-8 max-w-4xl w-full">
+          <div class="bg-white border-2 border-black p-8 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-4xl font-black mb-2">6+</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Years MAAK CORP Experience</div>
           </div>
-          <div>
-            <h3>Why Choose MAAK CORP?</h3>
-            <div class="card">
-              <h4>✓ Proven Track Record</h4>
-              <p>24+ successful projects delivered</p>
-            </div>
-            <div class="card">
-              <h4>✓ Cost-Effective Excellence</h4>
-              <p>70% savings with enterprise quality</p>
-            </div>
-            <div class="card">
-              <h4>✓ Future-Ready Solutions</h4>
-              <p>Scalable, secure, maintainable</p>
-            </div>
+          <div class="bg-white border-2 border-black p-8 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-4xl font-black mb-2">70%</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Cost Savings Guaranteed</div>
+          </div>
+          <div class="bg-white border-2 border-black p-8 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-4xl font-black mb-2">100%</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">Range Anxiety Solved</div>
+          </div>
+          <div class="bg-white border-2 border-black p-8 text-center transition-all duration-300 hover:bg-black hover:text-white">
+            <div class="text-4xl font-black mb-2">1st</div>
+            <div class="text-sm font-semibold uppercase tracking-wide">P2P Platform in Tunisia</div>
           </div>
         </div>
-        <div class="quote-section">
-          "Your success is our mission. Let's build the future together."
-        </div>
+
+        <p class="text-xl text-gray-500 font-medium tracking-wide mt-10">Strategic Partnership Proposal • Confidential • 2025</p>
       </div>
     </div>
   </div>
 
   <!-- Navigation -->
-  <div class="navigation">
-    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">Previous</button>
-    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next</button>
+  <div class="fixed bottom-10 left-1/2 transform -translate-x-1/2 flex gap-5 z-50">
+    <button
+      class="bg-white text-black border-2 border-black px-6 py-3 font-semibold text-sm transition-all duration-300 hover:bg-black hover:text-white tracking-wide uppercase disabled:opacity-30 disabled:cursor-not-allowed"
+      id="prevBtn" onclick="changeSlide(-1)">
+      Previous
+    </button>
+    <button
+      class="bg-white text-black border-2 border-black px-6 py-3 font-semibold text-sm transition-all duration-300 hover:bg-black hover:text-white tracking-wide uppercase disabled:opacity-30 disabled:cursor-not-allowed"
+      id="nextBtn" onclick="changeSlide(1)">
+      Next
+    </button>
   </div>
 
   <script>
@@ -1379,40 +870,117 @@
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
 
-    function showSlide(index) {
-      slides.forEach(slide => slide.classList.remove('active'));
-      slides[index].classList.add('active');
+    // Initialize slide indicator
+    document.getElementById('totalSlides').textContent = String(totalSlides).padStart(2, '0');
 
+    function showSlide(index) {
+      // Hide all slides
+      slides.forEach(slide => {
+        slide.classList.remove('active');
+        slide.classList.add('hidden');
+        slide.classList.remove('flex');
+      });
+
+      // Show current slide
+      slides[index].classList.remove('hidden');
+      slides[index].classList.add('active');
+      slides[index].classList.add('flex');
+
+      // Update slide counter
       document.getElementById('currentSlide').textContent = String(index + 1).padStart(2, '0');
-      document.getElementById('totalSlides').textContent = String(totalSlides).padStart(2, '0');
 
       // Update navigation buttons
-      document.getElementById('prevBtn').disabled = index === 0;
-      document.getElementById('nextBtn').disabled = index === totalSlides - 1;
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === totalSlides - 1;
+
+      // Update button text for last slide
+      if (index === totalSlides - 1) {
+        nextBtn.textContent = 'End';
+      } else {
+        nextBtn.textContent = 'Next';
+      }
+
+      if (index === 0) {
+        prevBtn.textContent = 'Start';
+      } else {
+        prevBtn.textContent = 'Previous';
+      }
     }
 
     function changeSlide(direction) {
       currentSlideIndex += direction;
-      if (currentSlideIndex < 0) currentSlideIndex = 0;
-      if (currentSlideIndex >= totalSlides) currentSlideIndex = totalSlides - 1;
+
+      // Boundary checks
+      if (currentSlideIndex < 0) {
+        currentSlideIndex = 0;
+      }
+      if (currentSlideIndex >= totalSlides) {
+        currentSlideIndex = totalSlides - 1;
+      }
+
       showSlide(currentSlideIndex);
     }
 
     // Keyboard navigation
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'ArrowLeft') changeSlide(-1);
-      if (event.key === 'ArrowRight') changeSlide(1);
-      if (event.key === 'Home') {
-        currentSlideIndex = 0;
-        showSlide(currentSlideIndex);
-      }
-      if (event.key === 'End') {
-        currentSlideIndex = totalSlides - 1;
-        showSlide(currentSlideIndex);
+      switch (event.key) {
+        case 'ArrowRight':
+        case ' ':
+          event.preventDefault();
+          changeSlide(1);
+          break;
+        case 'ArrowLeft':
+          event.preventDefault();
+          changeSlide(-1);
+          break;
+        case 'Home':
+          event.preventDefault();
+          currentSlideIndex = 0;
+          showSlide(currentSlideIndex);
+          break;
+        case 'End':
+          event.preventDefault();
+          currentSlideIndex = totalSlides - 1;
+          showSlide(currentSlideIndex);
+          break;
+        case 'Escape':
+          // Optional: fullscreen toggle or other functionality
+          break;
       }
     });
 
-    // Initialize
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', function (event) {
+      touchStartX = event.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', function (event) {
+      touchEndX = event.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swiped left - next slide
+          changeSlide(1);
+        } else {
+          // Swiped right - previous slide
+          changeSlide(-1);
+        }
+      }
+    }
+
+    // Initialize presentation
     showSlide(0);
   </script>
 </body>
